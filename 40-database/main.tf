@@ -97,8 +97,6 @@ resource "aws_instance" "rabbitmq" {
   subnet_id = local.database_subnet_id
       
   
-
-
   tags = merge(
     {
         Name = "${local.common_name}-rabbitmq"
