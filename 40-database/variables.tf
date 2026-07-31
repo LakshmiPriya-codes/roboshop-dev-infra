@@ -14,3 +14,7 @@ variable "zone_id" {
 variable "domain_name" {
     default = "lpdaws.online"
 }
+
+variable "mysql_root_password" {
+  type = string
+}
