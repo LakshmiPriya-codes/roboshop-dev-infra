@@ -11,5 +11,5 @@ variable "app_version" {
 }
 
 variable "domain_name" {
-  default = lpdaws.online
+  default = "lpdaws.online"
 }
