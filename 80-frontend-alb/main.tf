@@ -38,7 +38,7 @@ resource "aws_lb_listener" "https" {
 
 resource "aws_route53_record" "www" {
   zone_id = var.zone_id
-  name    = "${var-project}-${var.environment}.lpdaws.online" # *.lpdaws.online
+  name    = "${var.project}-${var.environment}.lpdaws.online" # *.lpdaws.online
   type    = "A"
 
   alias {
