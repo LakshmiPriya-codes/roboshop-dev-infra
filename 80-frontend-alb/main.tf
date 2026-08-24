@@ -1,6 +1,6 @@
 resource "aws_lb" "frontend_alb" {
-  name               = "${local.common_name}-frontend_alb" #roboshop-dev-frontend-alb
-  internal           = true
+  name               = "${local.common_name}-frontend-alb" #roboshop-dev-frontend-alb
+  internal           = false
   load_balancer_type = "application"
   security_groups    = [local.frontend_alb_sg_id]
   subnets            = local.public_subnet_ids
@@ -21,7 +21,7 @@ resource "aws_lb" "frontend_alb" {
 resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.frontend_alb.arn
   port              = "443"
-  protocol          = "HTTPs"
+  protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = local.certificate_arn
 
