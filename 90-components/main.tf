@@ -1,7 +1,12 @@
 module "components" {
   for_each =   var.components
-  source = "../../terraform-roboshop-component"
+  source = "git::https://github.com/daws-90s/terraform-roboshop-component.git?ref=main"
   environment = var.environment
   component = each.key
   app_version = each.value.app_version
 }
+
+
+
+
+/* "../../terraform-roboshop-component" */
