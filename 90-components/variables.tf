@@ -17,10 +17,10 @@ variable "domain_name" {
 
 variable "components" {
     default = {
-        /*  catalogue = {
+         catalogue = {
             rule_priority = 10
             app_version = "v3"
-         } */
+         }
          user = {
             rule_priority = 20
             app_version = "v3"
