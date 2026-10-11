@@ -1,4 +1,5 @@
 resource "aws_cloudfront_distribution" "roboshop" {
+
   origin {
     domain_name              = "${var.project}-${var.environment}.${var.domain_name}"
     origin_id                =  "${var.project}-${var.environment}.${var.domain_name}"
@@ -16,10 +17,9 @@ resource "aws_cloudfront_distribution" "roboshop" {
   enabled             = true
   is_ipv6_enabled     = false
   comment             = "Some comment"
-  default_root_object = "index.html"
 
 #cdn Name
-  aliases = ["${var.project}-${var.environment}.${var.domain_name}"]
+  aliases = ["${var.project}-cdn.${var.domain_name}"]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -27,10 +27,11 @@ resource "aws_cloudfront_distribution" "roboshop" {
     target_origin_id = "${var.project}-${var.environment}.${var.domain_name}"
 
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "https-only"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+    cache_policy_id = local.cachingDisabled
   }
 
   # Cache behavior with precedence 0
@@ -46,7 +47,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "https-only"
-    cache_policy_id = local.cachingDisabled
+    cache_policy_id = local.cachingOptmized
 
 
   }
