@@ -89,3 +89,17 @@ resource "aws_cloudfront_distribution" "roboshop" {
     ssl_support_method  = "sni-only"
   }
 }
+
+resource "aws_route53_record" "www" {
+  zone_id = var.zone_id
+  name    = "${var.project}-cdn.lpdaws.online" # *.lpdaws.online
+  type    = "A"
+
+  alias {
+    #Aws details
+    name                   = aws_cloudfront_distribution.roboshop.domain_name
+    zone_id                = aws_cloudfront_distribution.roboshop.hosted_zone_id
+    evaluate_target_health = true
+  }
+  allow_overwrite = true
+}
