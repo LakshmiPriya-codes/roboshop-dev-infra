@@ -1,6 +1,6 @@
 locals {
     cachingOptmized = data.aws_cloudfront_cache_policy.cachingOptmized.id
-    cachingdisabled = data.aws_cloudfront_cache_policy.cachingdisabled.id
+    cachingDisabled = data.aws_cloudfront_cache_policy.cachingDisabled.id
     common_tags = {
         Project = "${var.project}"
         Environment = "${var.environment}"

@@ -46,7 +46,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "https-only"
-    cache_policy_id = local.cachingdisabled
+    cache_policy_id = local.cachingDisabled
 
 
   }
