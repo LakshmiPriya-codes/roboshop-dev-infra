@@ -15,5 +15,6 @@ variable "sg_name" {
         "frontend",
         "frontend_alb",
         "bastion",
+        "vpn"
     ]
 }
